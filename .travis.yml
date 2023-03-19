@@ -7,6 +7,17 @@ before_install:
   - mkdir -p ~/$TRAVIS_BUILD_NUMBER
 jobs:
   include:
+    - language: python
+      stage: deploy
+      python: 3.10-dev
+      sudo: true
+      script:
+          - pip install trcli
+          - pwd
+          - ls
+          - python --version
+          - trcli -y -h https://testrail101.testrail.io --project "TestRail CLI code-first" -u gaurav.tyagi@gurock.io -p G00dn1ght29 parse_junit --title "Automated Tests from travis workflow" -f "./automation-framework-integration/sample_reports/TEST-junit-jupiter.xml"
+
     - language: java
       jdk: openjdk11
       python: "3.11-dev"
@@ -21,13 +32,3 @@ jobs:
         - pwd
         - python --version
         - ls
-    - language: python
-      stage: deploy
-      python: 3.10-dev
-      sudo: true
-      script:
-        - pip install trcli
-        - pwd
-        - ls
-        - python --version
-        - trcli -y -h https://testrail101.testrail.io --project "TestRail CLI code-first" -u gaurav.tyagi@gurock.io -p G00dn1ght29 parse_junit --title "Automated Tests from travis workflow" -f "./automation-framework-integration/sample_reports/TEST-junit-jupiter.xml"
