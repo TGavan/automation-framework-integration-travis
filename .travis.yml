@@ -3,6 +3,7 @@ jobs:
     - language: java
       jdk: openjdk8
       sudo: true
+      stage: test
       addons:
           chrome: stable
       script:
@@ -10,6 +11,7 @@ jobs:
           - mvn clean test
 
     - language: python
+      stage: deploy
       python: 3.10-dev
       dist: xenial
       sudo: true
