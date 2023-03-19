@@ -9,7 +9,7 @@ jobs:
   include:
     - language: python
       stage: deploy
-      python: 3.10
+      python: 3.10.2
       sudo: true
       script:
           - pip install trcli
