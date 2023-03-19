@@ -1,15 +1,13 @@
 dist: xenial
-
 env:
   global:
-    # include $HOME/.local/bin for `aws`
     - PATH=$HOME/.local/bin:$PATH
+    # include $HOME/.local/bin for `aws`
 
 before_install:
-    - pip install awscli
-    - mkdir -p ~/$TRAVIS_BUILD_NUMBER
-    - aws s3 sync s3://travis-build-stages-shared-storage-test/$TRAVIS_BUILD_NUMBER ~/$TRAVIS_BUILD_NUMBER
-
+  - pip install awscli
+  - mkdir -p ~/$TRAVIS_BUILD_NUMBER
+  - aws s3 sync s3://travis-build-stages-shared-storage-test/$TRAVIS_BUILD_NUMBER ~/$TRAVIS_BUILD_NUMBER
 jobs:
   include:
     - language: java
@@ -27,7 +25,6 @@ jobs:
     - language: python
       stage: deploy
       python: 3.10-dev
-      dist: xenial
       sudo: true
       script:
           - pip install trcli
