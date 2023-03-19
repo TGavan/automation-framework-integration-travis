@@ -10,7 +10,7 @@ jobs:
   include:
     - language: java
       jdk: openjdk11
-      python: 3.7.1
+      python: 3.10-dev
       sudo: true
       stage: test
       addons:
