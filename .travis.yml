@@ -6,9 +6,9 @@ env:
     - PATH=$HOME/.local/bin:$PATH
 
 before_install:
-  - pip install awscli
-  - mkdir -p ~/$TRAVIS_BUILD_NUMBER
-  - aws s3 sync s3://travis-build-stages-shared-storage-test/$TRAVIS_BUILD_NUMBER ~/$TRAVIS_BUILD_NUMBER
+    - pip install awscli
+    - mkdir -p ~/$TRAVIS_BUILD_NUMBER
+    - aws s3 sync s3://travis-build-stages-shared-storage-test/$TRAVIS_BUILD_NUMBER ~/$TRAVIS_BUILD_NUMBER
 
 jobs:
   include:
