@@ -1,17 +1,22 @@
-language: java
-# sudo: false
-# script: "mvn test"
+jobs:
+    include:
+        - language: java
+          jdk: openjdk8
+          sudo: true
+          addons:
+              chrome: stable
+          script:
+              - chmod 777 drivers/linux/chromedriver
+              - mvn clean test
 
 
-install:
-    - sudo apt-get update
-    - sudo apt-get install build-essential
-    - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-
-addons:
-    chrome: stable
-
-script:
-    - export LD_LIBRARY_PATH="$TRAVIS_BUILD_DIR/lib/"
-    - chmod 777 drivers/linux/chromedriver
-    - mvn clean test
+        - language: python
+          python:
+              - "3.10"
+          install:
+              - pip install -r requirements.txt
+          script:
+              - pip install trcli
+              - pwd
+              - ls
+              - python --version
