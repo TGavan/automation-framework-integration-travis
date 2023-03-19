@@ -13,4 +13,5 @@ addons:
 
 script:
     - export LD_LIBRARY_PATH="$TRAVIS_BUILD_DIR/lib/"
-    - mvn test
+    - chmod 777 drivers/linux/chromedriver
+    - mvn clean test
