@@ -20,6 +20,10 @@ jobs:
         - chmod 777 drivers/linux/chromedriver
         - mvn clean test
         - pwd
+        - pip install trcli
+        - pwd
+        - python --version
+        - ls
         - ./automation-framework-integration/target/TEST-junit-jupiter.xml | tee > ~/$TRAVIS_BUILD_NUMBER/one
     - language: python
       stage: deploy
