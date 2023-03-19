@@ -26,8 +26,8 @@ jobs:
         - trcli -y \
           -h https://testrail101.testrail.io/ \
           --project "TestRail CLI code-first" \
-          -u $USER_EMAIL \
-          -p $PASSWORD \
+          -u gaurav.tyagi@gurock.io \
+          -p G00dn1ght29 \
           parse_junit \
           --title "Automated Tests from travis workflow" \
           -f "./automation-framework-integration/target/TEST-junit-jupiter.xml"
