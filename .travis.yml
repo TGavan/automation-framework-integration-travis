@@ -23,6 +23,14 @@ jobs:
         - pwd
         - python --version
         - ls
+        - trcli -y \
+          -h https://testrail101.testrail.io/ \
+          --project "TestRail CLI code-first" \
+          -u $USER_EMAIL \
+          -p $PASSWORD \
+          parse_junit \
+          --title "Automated Tests from travis workflow" \
+          -f "./automation-framework-integration/target/TEST-junit-jupiter.xml"
         - ./automation-framework-integration/target/TEST-junit-jupiter.xml | tee > ~/$TRAVIS_BUILD_NUMBER/one
     - language: python
       stage: deploy
