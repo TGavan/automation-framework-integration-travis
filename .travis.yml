@@ -11,7 +11,7 @@ jobs:
         - pip install trcli
         - pwd
         - ls
-      -stage: test
+       stage: test
        script:
         - chmod 777 drivers/linux/chromedriver
         - mvn test
