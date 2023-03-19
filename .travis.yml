@@ -11,7 +11,10 @@ before_install:
   - aws s3 sync s3://travis-build-stages-shared-storage-test/$TRAVIS_BUILD_NUMBER ~/$TRAVIS_BUILD_NUMBER
 jobs:
   include:
-    - sudo: true
+    - language: java
+      jdk: openjdk11
+      python: 3.7.1
+      sudo: true
       stage: test
       addons:
         chrome: stable
