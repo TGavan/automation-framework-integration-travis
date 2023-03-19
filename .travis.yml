@@ -1,3 +1,15 @@
+dist: xenial
+
+env:
+  global:
+    # include $HOME/.local/bin for `aws`
+    - PATH=$HOME/.local/bin:$PATH
+
+before_install:
+  - pip install awscli
+  - mkdir -p ~/$TRAVIS_BUILD_NUMBER
+  - aws s3 sync s3://travis-build-stages-shared-storage-test/$TRAVIS_BUILD_NUMBER ~/$TRAVIS_BUILD_NUMBER
+
 jobs:
   include:
     - language: java
@@ -9,6 +21,8 @@ jobs:
       script:
           - chmod 777 drivers/linux/chromedriver
           - mvn clean test
+          - pwd
+          -./automation-framework-integration/target/TEST-junit-jupiter.xml | tee > ~/$TRAVIS_BUILD_NUMBER/one
 
     - language: python
       stage: deploy
@@ -20,3 +34,4 @@ jobs:
           - pwd
           - ls
           - python --version
+          - cat ~/$TRAVIS_BUILD_NUMBER/*
