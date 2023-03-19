@@ -6,13 +6,13 @@ jobs:
       sudo: true
       addons:
         chrome: stable
-      stage: deploy
+    - stage: deploy
       script:
         - pip install trcli
         - pwd
         - ls
-       stage: test
-       script:
+    - stage: test
+      script:
         - chmod 777 drivers/linux/chromedriver
         - mvn test
         - python --version
