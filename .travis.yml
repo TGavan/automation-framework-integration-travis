@@ -13,7 +13,7 @@ jobs:
       addons:
         chrome: stable
       stage: deploy
-      before_script:
+      before_script: run tests
         - chmod 777 drivers/linux/chromedriver
         - mvn test
       script:
