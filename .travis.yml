@@ -4,7 +4,6 @@ env:
     # include $HOME/.local/bin for `aws`
     - PATH=$HOME/.local/bin:$PATH
 before_install:
-  - pip install awscli
   - mkdir -p ~/$TRAVIS_BUILD_NUMBER
 jobs:
   include:
@@ -17,7 +16,6 @@ jobs:
         chrome: stable
       script:
         - chmod 777 drivers/linux/chromedriver
-        - mvn clean test
         - pwd
         - pip install trcli
         - pwd
@@ -32,4 +30,4 @@ jobs:
         - pwd
         - ls
         - python --version
-        - trcli -y - h https://testrail101.testrail.io --project "TestRail CLI code-first" -u gaurav.tyagi@gurock.io -p G00dn1ght29 parse_junit --title "Automated Tests from travis workflow" -f "./automation-framework-integration/sample_reports/TEST-junit-jupiter.xml"
+        - trcli -y -h https://testrail101.testrail.io --project "TestRail CLI code-first" -u gaurav.tyagi@gurock.io -p G00dn1ght29 parse_junit --title "Automated Tests from travis workflow" -f "./automation-framework-integration/sample_reports/TEST-junit-jupiter.xml"
