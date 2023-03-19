@@ -2,15 +2,16 @@ dist: xenial
 jobs:
   include:
     - language: python
-      stage: deploy
       python: 3.9-dev
       sudo: true
       addons:
         chrome: stable
+      stage: deploy
       script:
-          - pip install trcli
-          - pwd
-          - ls
+        - pip install trcli
+        - pwd
+        - ls
+      -stage: test
           - chmod 777 drivers/linux/chromedriver
           - mvn test
           - python --version
