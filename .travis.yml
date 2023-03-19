@@ -1,20 +1,22 @@
 jobs:
     include:
         - language: java
-          jdk: openjdk8
-          sudo: true
-          addons:
+          -stage: test
+           jdk: openjdk8
+           sudo: true
+           addons:
               chrome: stable
-          script:
+           script:
               - chmod 777 drivers/linux/chromedriver
               - mvn clean test
 
 
         - language: python
-          python: 3.10-dev
-          dist: xenial
-          sudo: true
-          script:
+          -stage: parse
+           python: 3.10-dev
+           dist: xenial
+           sudo: true
+           script:
               - pip install trcli
               - pwd
               - ls
