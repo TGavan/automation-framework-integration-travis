@@ -6,7 +6,7 @@ jobs:
       sudo: true
       addons:
         chrome: stable
-    - stage: deploy
+      stage: deploy
       script:
         - pip install trcli
         - pwd
