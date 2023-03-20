@@ -1,24 +1,14 @@
+dist: xenial
 jobs:
   include:
-    - sudo: true
-      dist: xenial
-      language: python
+    - language: python
       python: 3.9-dev
       addons:
         chrome: stable
-      stage: deploy
+      stage: Run tests and parse results to TestRail
       before_script:
         - chmod 777 drivers/linux/chromedriver
         - mvn test
       script:
-        - pwd
-        - ls
         - pip install trcli
-        - python --version
         - trcli -y -h https://testrail101.testrail.io --project "TestRail CLI code-first" -u gaurav.tyagi@gurock.io -p G00dn1ght29 parse_junit --title "Automated Tests from travis workflow" -f "./target/TEST-junit-jupiter.xml"
-    - stage: test
-      script:
-        - python --version
-
-
-
