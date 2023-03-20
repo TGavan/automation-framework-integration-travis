@@ -7,13 +7,11 @@ addons:
       - python3.9-dev
 jobs:
   include:
-    - language: python
-      python: 3.9-dev
-      sudo: true
+    - sudo: true
       addons:
         chrome: stable
       stage: deploy
-      before_script: run tests
+      before_script:
         - chmod 777 drivers/linux/chromedriver
         - mvn test
       script:
